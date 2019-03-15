@@ -1,0 +1,29 @@
+.headings
+{
+color:#033c6d !important;
+}
+.subheadings
+{
+color:#09579c !important;
+padding-bottom: 2px;
+}
+.syntaxwithexplanation
+{
+color:#0e7742 !important;
+}
+.special{
+    color:orangered;
+}
+.sectionstartingdiv
+{
+    padding-left: 25px;
+}
+.saveable{
+    color:darkgreen;
+}
+.modified{
+    font-size:25px;
+}
+.specialforngClass{
+    border: 1px solid darkmagenta;
+}

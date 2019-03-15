@@ -1,0 +1,35 @@
+.headings
+{
+color:#033c6d !important;
+text-transform: uppercase;
+}
+.subheadings
+{
+color:#09579c !important;
+padding-bottom: 2px;
+/* text-transform: uppercase; */
+font-size: 18px;
+/* border-top:1px solid #09579c; */
+}
+
+/* .subheadings:nth-child(0)
+{
+   
+} */
+.syntaxwithexplanation
+{
+color:#0e7742 !important;
+}
+.sectionstartingdiv
+{
+    padding-left: 25px;
+}
+.seconds{
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color:red;
+    text-align: center;
+    font-size: 25px;
+    margin: 10px;
+}

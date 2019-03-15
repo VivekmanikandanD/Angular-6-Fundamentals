@@ -1,0 +1,54 @@
+<div class="sectionstartingdiv">
+    <h3 class="headings">User Input</h3>
+    <h4 class="subheadings">Binding to user input events</h4>
+    <button (click)="onClickMe()">Click me!</button>
+    {{ clickMessage }}
+
+    <h4 class="subheadings">Get user input from the $event object</h4>
+    <input (keyup)="onKey($event)">
+    <p>{{ values }}</p>
+    
+    <div class="syntaxwithexplanation">
+        Show the key names pressed
+    </div>
+    <br>
+    <input (keyup)="onKeyTyped($event)">
+    <p>{{ keynamevalues }}</p>
+
+    <div class="syntaxwithexplanation">
+        Type the $event (with type declaration(KeyboardEvent) in onKey method's parameter)
+    </div>
+    <br>
+    <input (keyup)="onKey($event)">
+    <p>{{ values }}</p>
+
+    <h4 class="subheadings">Get user input from a template reference variable</h4>
+    <input #box (keyup)="0"><br>
+    {{ box.value }}
+
+    <br>
+    <br>
+    <div class="syntaxwithexplanation">
+         Rewrite of the keyup example which uses template reference variable to get the user's input
+    </div>
+    <input #boxforonkey (keyup)="onKeywithTemplateRef(boxforonkey.value)"><br>
+    {{ valueswithtemplaterefvar }}
+
+    <h4 class="subheadings">Key event filtering (with key.enter) and blur event</h4>
+    <input #boxforenterkey (keyup.enter)="onEnter(boxforenterkey.value)" (blur)="onEnter(boxforenterkey.value)"><br>
+    {{ valuesforenterkey }}
+
+    <h4 class="subheadings">Putting it all together (a micro-app)</h4>
+    <div class="syntaxwithexplanation">
+        Little Tour of Heroes with enter, blur and click events
+    </div>
+    <input #newHero (keyup.enter)="addHero(newHero.value);newHero.value=''" (blur)="addHero(newHero.value);newHero.value=''">
+    <button (click)="addHero(newHero.value)">Add</button>
+    <button (click)="clearHeroes()">Clear</button>
+    <ul>
+        <li *ngFor="let hero of heroes">
+            {{ hero }}
+        </li>
+    </ul>
+       
+</div>

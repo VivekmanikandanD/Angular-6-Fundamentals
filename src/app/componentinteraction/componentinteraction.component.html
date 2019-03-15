@@ -1,0 +1,37 @@
+<div class="sectionstartingdiv">
+<h3 class="headings">Component Interaction</h3>
+
+<h4 class="subheadings">Pass data from parent to child with input binding</h4>
+<h2>{{ master }} controls {{ heroes.length }} heroes</h2>
+<app-componentinteractionchild  *ngFor="let hero of heroes" [hero]="hero" [master]="master"></app-componentinteractionchild>
+
+
+<h4 class="subheadings">Intercept input property changes with a setter</h4>
+<app-interceptwithsetterchild *ngFor="let name of names" [name]="name"></app-interceptwithsetterchild>
+
+<h4 class="subheadings">Intercept input property changes with ngOnChanges()</h4>
+<h2>Source code version</h2>
+<button (click)="newMinor()">New minor Version</button>
+<button (click)="newMajor()">New major Version</button>
+<app-interceptwithngonchangeschild [minor]="minor" [major]="major"></app-interceptwithngonchangeschild>
+
+<h4 class="subheadings">Parent listens for child event</h4>
+<h2>Should mankind colonize the Universe?</h2>
+<h3>Agree: {{agreed}}, Disagree: {{disagreed}}</h3>
+<app-parentlistensforchildevent *ngFor="let voter of voters" [name]="voter.name" (voted)="onVoted($event)"></app-parentlistensforchildevent>
+
+<h4 class="subheadings">Parent interacts with child via local variable</h4>
+<h3>Countdown to Liftoff(via local variable)</h3>
+<button (click)="timer.start()">Start</button>
+<button (click)="timer.stop()">Stop</button>
+<div class="seconds">{{ timer.seconds }}</div>
+<app-parentinteractswithchildvialocalvariable #timer></app-parentinteractswithchildvialocalvariable>
+
+<h4 class="subheadings">Parent calls an @ViewChild()</h4>
+<div class="syntaxwithexplanation">
+    Here, we have <b>used two components</b>, one for parent(parentforviewchild component) and another for child(parentinteractswithchildvialocalvariable) inside the root <b> 'component interaction'</b> component as the former example uses template reference variable(local variable) for performing the same operation as displayed here
+</div>
+<app-parentforviewchild></app-parentforviewchild>
+
+<h4 class="subheadings">Parent and children communicate via a service</h4>
+</div>

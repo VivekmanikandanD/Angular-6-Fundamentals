@@ -1,0 +1,216 @@
+<div class="sectionstartingdiv">
+    <h3 class="headings">Interpolation</h3>
+      <p>Current customer : {{ currentCustomer }}</p>
+      <p>{{ title }}</p>
+
+      <p>The sum of 1 + 1 is {{1 + 1}}</p>
+      <p>The sum of 1 + 1 is not {{1 + 1+ getVal()}}</p>
+    
+    <h3 class="headings">Expression Context</h3>
+    <h4 class="subheadings">Template Input Variable</h4>
+    <div class="syntaxwithexplanation">
+      <p>let customer of customers</p>
+      <p>Here, customers-an array of objects</p>
+      <p>customer-template input variable</p>
+    </div>
+      <ul>
+        <li *ngFor="let customer of customers">
+          {{customer.name}}
+        </li>
+      </ul>
+
+    <h4 class="subheadings">Template Reference Variable</h4>
+    <div class="syntaxwithexplanation">
+        <p>#customerInput</p>
+        <p>Here, #customerInput -template reference variable </p>
+        <p>in keyup event we get the template reference variable value and send it to the angular variable defined in component and display that</p>
+      </div>
+    <input #customerInput (keyup)="gettheValue(customerInput.value)">{{ templatereferencevariable }}
+
+    <h4 class="subheadings">Template Statements</h4>
+    <div class="syntaxwithexplanation">
+      Statement context with component instance
+    </div>
+    <button (click)="deleteHero(1)">Delete hero</button>
+
+    <div class="syntaxwithexplanation">
+        Statement context with properties of template's own context
+      </div>
+    <button (click)="onSave()">Save</button>
+    <button *ngFor="let hero of heroes" (click)="deleteHero(hero)"{{hero.name}}></button>
+    <!-- <form #heroForm (ngSubmit)="onSubmit(heroForm)">...</form> -->
+
+    <h4 class="subheadings">Binding targets</h4>
+    <div class="syntaxwithexplanation">
+     Target as Property 
+    </div>
+    <!-- <div [ngClass]="{'special':IsSpecial}"></div> -->
+    <h4 class="subheadings">Property Binding or Interpolation ?</h4>
+    <!-- <div class="syntaxwithexplanation"> -->
+      <p><img src="{{heroImageUrl}}"> is the <i>interpolated</i> image.</p>
+      <p><img [src]="heroImageUrl"> is the <i>property bound</i> image.</p>
+
+      <p><span>"{{titlebinding}}" is the <i>interpolated</i> title.</span></p>
+      <p>"<span [innerHTML]="titlebinding"></span>" is the <i>property bound</i> title.</p>
+      
+      <p><span>"{{titlenew}}" is the <i>interpolated</i> new title </span></p>
+      <p>"<span [innerHTML]="titlenew"></span>" is the property bound new title</p>
+
+      <p>Content Security</p>
+      <p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title </span></p>
+      <p>"<span [innerHTML]="evilTitle"></span>" is the property bound evil title</p>
+
+      <h4 class="subheadings">Attribute binding</h4>
+      <table border="1">
+        <tr><td [attr.colspan]="1+1">One-Two</td></tr>
+        <tr><td>Five</td><td>Six</td></tr>
+      </table>
+      <br>
+      <button [attr.aria-label]="actionName">{{actionName}} with aria-label attribute binding</button>
+
+      <h4 class="subheadings">Class binding</h4>
+      <div [class.special]="isSpecial">The class binding is special </div>
+      <button (click)="checkClassBinding()">Check Class Binding</button>
+      <div class="special" [class.special]="!isSpecial">This class binding is not so special , as this has not equal to operator before the isSpecial template expression</div>
+    <!-- </div> -->
+    <h4 class="subheadings">Style binding</h4>
+    <button [style.color]="isSpecialStyle? 'red' : 'green'">Red</button>
+    <button (click)="checkStyleBinding()">Check Style Binding</button>
+    <button [style.background-color]="isSpecialStyle? 'cyan':'grey'">Save</button>
+
+    <button [style.font-size.em]="isSpecialStyle ? 3:1">Big</button>
+    <button [style.font-size.%]="!isSpecialStyle ? 150:50">Small with dash-case</button>
+    
+    <button [style.fontSize.%]="!isSpecialStyle ? 150:50">Small with Camel case</button>
+
+    <h4 class="subheadings">Event binding</h4>
+    <div class="syntaxwithexplanation">
+      Target Event
+    </div>
+    <button (click)="onSave()">Save(click)</button>
+    <button on-click="onSave()">Save with Canonical form(on-click)</button>
+    <div class="syntaxwithexplanation">
+        $Event and event handling statements
+    </div>
+    <div class="syntaxwithexplanation">
+        If the target event is a native DOM element event,here we use (input) event in the input box
+    </div>
+    <div><b>Current Hero Name:</b><br>{{ currentHero.name }}</div><br>
+    <input [value]="currentHero.name" (input)="currentHero.name=$event.target.value">
+    <div class="syntaxwithexplanation">
+        Custom events with EventEmitter
+    </div>
+
+    <h4 class="subheadings">Two-way binding</h4>
+    <div class="syntaxwithexplanation">
+     using [(ngModel)] directive
+    </div>
+    <label>Enter the Current Hero name</label>
+    <input [(ngModel)]="currentHero.name">
+    <br>
+    <br>
+    <div>
+    <div class="syntaxwithexplanation">
+      Normal style binding with component 'size' property
+    </div>
+    <button (click)="decrease()">-</button>
+    <button (click)="increase()">+</button>
+    <br>
+    <label [style.font-size.px]="size">Font Size: {{size}} px</label>
+    </div>
+    <h4 class="subheadings">Built-in directives</h4>
+    <h4 class="subheadings">Built-in attribute directives</h4>
+    <div class="syntaxwithexplanation">
+      NgClass
+    </div>
+    <div [ngClass]="currentClasses">This div initially do not have saveable,unchanged and special classes </div>
+    <button (click)="checksaveableclass()">Check Saveable class </button>
+    <button (click)="checkunchangedclass()">Check UnChanged class</button>
+    <button (click)="checkspecialclass()">Check Special class</button>
+
+    <div class="syntaxwithexplanation">
+      NgStyle
+    </div>
+    <div [ngStyle]="currentStyles">This div is initially italic,normal weight and extra large(24px)</div>
+    <button (click)="checkfontstyle()">Check Font Style</button>
+    <button (click)="checkfontweight()">Check Font weight</button>
+    <button (click)="checkfontsize()">Check Font Size</button>
+
+    <h4 class="subheadings">Two-way binding with [(ngModel)]</h4>
+    <div class="syntaxwithexplanation">
+      [ngModel] and (ngModelChange)
+    </div>
+    <input [ngModel]="currentHero.name" (ngModelChange)="setUpperCaseName($event)">
+
+    <h4 class="subheadings">Built-in structural directives</h4>
+    <div class="syntaxwithexplanation">
+      *ngIf
+    </div>
+    <div *ngIf="currentHero">Hello {{currentHero.name}}</div>
+
+    <div class="syntaxwithexplanation">
+      *ngForof
+    -->Iterating customers array object
+    </div>
+    <div *ngFor="let customer of customers; let i=index; trackBy:trackByHeroes" ><b>Customer</b> {{i+1}} - {{customer.name}}</div>
+
+    <h4 class="subheadings">NgSwitch</h4>
+    <label>Enter values Sulochana or Dhanapal Surya Vivek or Dhanapal or Surya or Vivek to test NgSwitch case</label>
+    <br>
+    <input [(ngModel)]="currentHero.name">
+    <div [ngSwitch]="currentHero.name">
+      <div *ngSwitchCase="'Dhanapal Surya Vivek'">Family</div>
+      <div *ngSwitchCase="'Sulochana'">Grand Mother</div>
+      <div *ngSwitchCase="'Dhanapal'">Father</div>
+      <div *ngSwitchCase="'Surya'">Brother</div>
+      <div *ngSwitchCase="'Vivek'">Me</div>
+      <div *ngSwitchDefault>Default</div>
+    </div>
+
+    <h4 class="subheadings">Template reference variables(#var)</h4>
+    <input #phone placeholder="phone number">
+    <button (click)="callPhone(phone.value)">Check the phone number</button>
+    <br>
+    <div class="syntaxwithexplanation">With ref- prefix alternative</div>
+    <input ref-testname placeholder="test name">
+    <button (click)="withrefalternative(testname.value)">Check the Test Name</button>
+   <!--  <span>{{phone.value}}</span> -->
+
+   <h4 class="subheadings">Aliasing input/output properties</h4>
+   <!-- <div (myClick)="clickMessage=$event" clickable>click with MyClick</div> -->
+   <br>
+   <h4 class="subheadings">Template expression operators</h4>
+   <h4 class="subheadings">The Pipe operator (|)</h4>
+   <div>{{currentHero.name | uppercase}}</div>
+
+   <div class="syntaxwithexplanation">With a Pipe chain</div>
+   <div>{{currentHero.name | uppercase | lowercase}}</div>
+
+   <div class="syntaxwithexplanation">Applying parameters to a pipe (date:'longDate')</div>
+   <div>{{currentHero?.dob | date:'longDate'}}</div>
+
+   <div class="syntaxwithexplanation">with json pipe operator in array of objects</div>
+   <div>{{customers | json}}</div>
+
+   <div class="syntaxwithexplanation">with json pipe operator in an object</div>
+   <div>{{currentHero | json}}</div>
+
+   <h4 class="subheadings">The safe navigation operator (?.)</h4>
+   <div class="syntaxwithexplanation">Guarding against null and undefined values in property paths</div>
+   <div>The current Hero name is {{currentHero?.name }}</div>
+
+   <h4 class="subheadings">The non null assertion operator (!)</h4>
+   <div class="syntaxwithexplanation">Tells typescript type checker to suspend strict null checks for a specific property expression, we only need this operator when we turn on strict null checks.</div>
+   <div>The current Hero name is {{currentHero!.name }}</div>
+
+   <h4 class="subheadings">The $any type cast function </h4>
+   <div class="syntaxwithexplanation">To silence the type error in Binding expressions we can use $any cast function to cast the expression to the 'any' type</div>
+   <div>
+     The hero's marker is {{ $any(currentHero).marker }}
+   </div>
+    <!-- Accessing an undeclared member -->
+   <div>
+    Undeclared members is  {{$any(this).member}}
+   </div>
+
+</div>

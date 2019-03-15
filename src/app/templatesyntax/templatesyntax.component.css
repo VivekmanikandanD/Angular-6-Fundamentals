@@ -1,0 +1,16 @@
+.templatesyntaxdiv
+{
+    margin-top:-14px;
+}
+nav
+{
+   background-color: #726f6f;
+   font-family: 'Roboto';
+   height:21px;
+}
+nav a 
+{
+    font-size: 14px;
+    color:white;
+    padding:10px;
+}

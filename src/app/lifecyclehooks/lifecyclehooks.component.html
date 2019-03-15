@@ -1,0 +1,70 @@
+<div class="sectionstartingdiv">
+  <h3 class="headings">Life Cycle hooks</h3>
+
+
+<h3 class="subheadings">Lifecycle sequence</h3>
+<ol class="syntaxwithexplanation">
+  <li>ngOnChanges();</li>
+  <li>ngOnInit();</li>
+  <li>ngDoCheck();</li>
+  <li>ngOnAfterContentInit();</li>
+  <li>ngOnAfterContentChecked();</li>
+  <li>ngOnViewInit();</li>
+  <li>ngOnViewChecked();</li>
+  <li>ngOnDestroy();</li>
+</ol>
+<h4 class="subheadings">Description</h4>
+  <div class="subheadings">
+    ngOnChanges()
+    <p class="syntaxwithexplanation">Angular calls its ngOnChanges() method whenever it detects changes to input properties of the component (or directive)(@Input)</p>
+  </div>
+  <div class="subheadings">
+      ngOnInit()
+      <div class="syntaxwithexplanation">1.To perform complex initializations shortly after construction.</div>
+      <div class="syntaxwithexplanation">2.To set up the component after Angular sets the input properties.</div>
+  </div>
+  <div class="subheadings">
+      ngDoCheck()
+      <div class="syntaxwithexplanation">1.To detect and act upon changes that Angular doesn't catch on its own.
+      <div class="syntaxwithexplanation">2.To detect a change that Angular overlooked.</div>
+  </div>
+  <div class="subheadings">
+      ngOnAfterContentInit()
+      <p class="syntaxwithexplanation">Angular calls after projecting external content into the child component between ng-content tags from after-content tags in the parent component.
+        The ng-content is a placeholder for the external content
+        We should never put content between a component's element tags unless you intend to project that content into the component.
+        Angular completes composition of the projected content before finishing the composition of this component's view. There is a small window between the AfterContent... and AfterView... hooks to modify the host view.
+      </p>
+  </div>
+  <div class="subheadings">
+      ngOnAfterContentChecked()
+      <p class="syntaxwithexplanation">Angular calls after projecting external content into the child component between ng-content tags from after-content tags in the parent component.
+          The ng-content is a placeholder for the external content
+          We should never put content between a component's element tags unless you intend to project that content into the component.
+          Angular completes composition of the projected content before finishing the composition of this component's view. There is a small window between the AfterContent... and AfterView... hooks to modify the host view.
+      </p>
+  </div>
+  <div class="subheadings">
+        ngOnViewInit()
+        <p class="syntaxwithexplanation">Angular calls after it creates a component's child views. Child view changes can be detected by querying for the child view via the property decorated with @ViewChild.</p>
+  </div>
+  <div class="subheadings">
+        ngOnViewChecked()
+        <p class="syntaxwithexplanation">Angular calls after it creates a component's child views. Child view changes can be detected by querying for the child view via the property decorated with @ViewChild.</p>
+  </div>
+  <div class="subheadings">
+        ngOnDestroy()
+        <p class="syntaxwithexplanation">we should put cleanup logic in ngOnDestroy(), the logic that must run before Angular destroys the directive.Place to free resources. Unsubscribe from Observables and DOM events.
+        </p>
+  </div>
+
+<h4 class="subheadings">Life cycle examples</h4>
+<input [(ngModel)]="lifecycleinput"><br>
+<span>{{lifecycleinput }}</span><br>
+<button (click)="clearlifecylcemsgs()">Clear</button>
+<ul class="syntaxwithexplanation">
+  <li *ngFor="let item of lifecyclemsgs">
+    {{ item }}
+  </li>
+</ul>
+</div>
